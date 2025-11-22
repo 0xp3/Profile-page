@@ -13,13 +13,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Link from "next/link"
 
-export default function CreatePost() {
+export default function Web3ProfileCreatePost() {
   const [visibility, setVisibility] = useState("public")
   const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleProfilePostImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
       const reader = new FileReader()
@@ -30,7 +30,7 @@ export default function CreatePost() {
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleProfilePostSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log("[v0] Post submitted:", { title, content, visibility, hasImage: !!imagePreview })
     // Handle post submission here
@@ -84,7 +84,7 @@ export default function CreatePost() {
           </CardHeader>
 
           <CardContent className="p-6">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleProfilePostSubmit} className="space-y-6">
               {/* Title Field */}
               <div className="space-y-2">
                 <Label htmlFor="title" className="text-base font-bold">
@@ -151,7 +151,13 @@ export default function CreatePost() {
                       <p className="text-xs text-muted-foreground mt-1">PNG, JPG, GIF up to 10MB</p>
                     </label>
                   )}
-                  <Input id="image" type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
+                  <Input
+                    id="image"
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={handleProfilePostImageUpload}
+                  />
                 </div>
               </div>
 

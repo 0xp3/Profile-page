@@ -1,9 +1,9 @@
-import Web3Profile from "@/components/web3-profile"
+import Web3ArtistProfile from "@/components/web3-artist-profile"
 
 export default function Home() {
   return (
     <main>
-      <Web3Profile />
+      <Web3ArtistProfile />
     </main>
   )
 }
